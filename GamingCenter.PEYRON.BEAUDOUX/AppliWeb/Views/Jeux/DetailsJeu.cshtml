@@ -1,0 +1,125 @@
+﻿@model AppliWeb.Models.JeuViewModel
+
+@{
+    ViewBag.Title = "DetailsJeu";
+}
+
+<link  type="text/css" rel="stylesheet" href="~/Styles/"/>
+<h2>DetailsJeu</h2>
+
+<div>
+    <h4>Jeu</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateSortie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateSortie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GenreId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GenreNom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EditeurId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EditeurNom)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Evaluer", "Evaluer", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+<div>
+    <h4>Evaluations</h4>
+    <hr />
+    <table class="table"
+        <tr>
+            <th>
+                @Html.DisplayName("Nom Evaluateur")
+            </th>
+            <th>
+                @Html.DisplayName("Date")
+            </th>
+            <th>
+                @Html.DisplayName("Note")
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model.Evaluations)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomEvaluateur)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Note)
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<div>
+    <h4>Expériences</h4>
+    <hr />
+    <table class="table"
+        <tr>
+            <th>
+                @Html.DisplayName("Nom Joueur")
+            </th>
+            <th>
+                @Html.DisplayName("Temps de Jeu") (h)
+            </th>
+            <th>
+                @Html.DisplayName("Pourcentage")
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model.Experiences)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Joueur)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TempsDeJeu)
+                </td>
+                <td>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: @item.Pourcentage%;" aria-valuenow="@item.Pourcentage" aria-valuemin="0" aria-valuemax="100">@item.Pourcentage%</div>
+                    </div>
+                </td>
+            </tr>
+        }
+    </table>
+</div >

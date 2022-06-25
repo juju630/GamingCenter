@@ -1,0 +1,61 @@
+﻿@model AppliWeb.Models.AccueilViewModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+
+<div>
+    <div class="spaceForDisplay">
+        <div class="row">
+            <hr />
+            <h4><span>Jeux</span></h4>
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                    <tr class="bg-info">
+                        <th scope="col"> @Html.DisplayName("Nom") </th>
+                        <th scope="col"> @Html.DisplayName("description")</th>
+                        <th scope="col"> @Html.DisplayName("Editeur")</th>
+                        <th scope="col"> @Html.DisplayName("Moyenne")</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Jeux)
+                    {
+                        <tr>
+                            <th scope="row">@Html.DisplayFor(modelItem => item.Nom)</th>
+                            <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                            <td>@Html.DisplayFor(modelItem => item.EditeurNom)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Moyenne) / 10</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <hr />
+            <h4><span>Evaluations</span></h4>
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                    <tr class="bg-info">
+                        <th scope="col"> @Html.DisplayName("Nom Evaluateur") </th>
+                        <th scope="col"> @Html.DisplayName("Jeu noté")</th>
+                        <th scope="col"> @Html.DisplayName("Date")</th>
+                        <th scope="col"> @Html.DisplayName("Note")</th>
+                    </tr>
+                </thead>
+                @foreach (var item in Model.Evaluations)
+                {
+                    <tr>
+                        <th scope="row">@Html.DisplayFor(modelItem => item.NomEvaluateur)</th>
+                        <td>@Html.DisplayFor(modelItem => item.NomJeu)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Note) / 10</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+
+</div>
