@@ -1,2 +1,0 @@
-# GamingCenter
-Projet LIcence C#
